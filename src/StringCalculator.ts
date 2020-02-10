@@ -16,9 +16,9 @@ export default class StringCalculator {
     } else {
       numbers = this.addTwoLiner(input);
     }
-    const negative = numbers.find(n => n < 0);
-    if (negative) {
-      throw new Error('Negatives not allowed: ' + negative);
+    const negatives = numbers.filter(n => n < 0);
+    if (negatives && negatives.length > 0) {
+      throw new Error('Negatives not allowed: ' + negatives.join(','));
     }
 
     return numbers.reduce((prev, next) => prev + next);

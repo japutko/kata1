@@ -67,9 +67,15 @@ describe('StringCalculator', () => {
     });
 
     it('throws error when input contains negative number', () => {
-      const input = buildInput(';', [1,-2,3,-4]);
+      const input = buildInput(';', [1,-2,3,4]);
 
       expect(() => calculator.add(input)).toThrowError('Negatives not allowed: -2');
+    });
+
+    it('throws error when input contains negative numbers with all such named', () => {
+      const input = buildInput(';', [1,-2,3,-4]);
+
+      expect(() => calculator.add(input)).toThrowError('Negatives not allowed: -2,-4');
     });
 
   });
