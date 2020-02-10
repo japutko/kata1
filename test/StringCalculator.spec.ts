@@ -94,6 +94,14 @@ describe('StringCalculator', () => {
       expect(result).toBe(10);
     });
 
+    it('accept input with first line being separator consisting different symbols', () => {
+      const input = buildInput(';*/', [1,2,3,4]);
+
+      const result = calculator.add(input);
+
+      expect(result).toBe(10);
+    });
+
   });
 
   describe('getCalledCount', () => {
