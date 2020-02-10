@@ -10,8 +10,16 @@ describe('StringCalculator', () => {
       return `${separator}\n${numbers.join(separator)}`;
     }
 
-    it('return 0 on empty input', () => {
+    it('return 0 on empty single line input', () => {
       const input = '';
+
+      const result = calculator.add(input);
+
+      expect(result).toEqual(0);
+    });
+
+    it('return 0 on empty multi line input', () => {
+      const input = buildInput(';', []);
 
       const result = calculator.add(input);
 
