@@ -38,16 +38,12 @@ describe('StringCalculator', () => {
       expect(result).toEqual(6);
     });
 
-    it('fails when more than 3 numbers are given', () => {
+    it('doesn\'t fail when more than 3 numbers are given', () => {
       const input = '1,2,3,4';
 
-      let result: number = 0;
-      try {
-        result = calculator.add(input);
-      } catch (e) {
-        expect(e.message).toEqual('Number of input elements cannot exceed 3');
-        expect(result).toBe(0);
-      }
+      const result = calculator.add(input);
+      
+      expect(result).toBe(10);
     });
 
   });
