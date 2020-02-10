@@ -6,6 +6,10 @@ describe('StringCalculator', () => {
 
   describe('add', () => {
 
+    function buildInput(separator: string, numbers: number[]): string {
+      return `${separator}\n${numbers.join(separator)}`;
+    }
+
     it('return 0 on empty input', () => {
       const input = '';
 
@@ -54,6 +58,14 @@ describe('StringCalculator', () => {
       expect(result).toBe(10);
     });
 
+    it('accept input with first line being separator', () => {
+      const input = buildInput(';', [1,2,3,4]);
+
+      const result = calculator.add(input);
+
+      expect(result).toBe(10);
+    });
+
   });
 
-})
+});
