@@ -28,6 +28,7 @@ export default class StringCalculator {
     if (negatives && negatives.length > 0) {
       throw new Error('Negatives not allowed: ' + negatives.join(','));
     }
+    numbers = numbers.filter(n => n <= 1000);
 
     return numbers.reduce((prev, next) => prev + next);
   }

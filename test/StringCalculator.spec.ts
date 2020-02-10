@@ -66,16 +66,24 @@ describe('StringCalculator', () => {
       expect(result).toBe(10);
     });
 
-    it('throws error when input contains negative number', () => {
+    it('throw error when input contains negative number', () => {
       const input = buildInput(';', [1,-2,3,4]);
 
       expect(() => calculator.add(input)).toThrowError('Negatives not allowed: -2');
     });
 
-    it('throws error when input contains negative numbers with all such named', () => {
+    it('throw error when input contains negative numbers with all such named', () => {
       const input = buildInput(';', [1,-2,3,-4]);
 
       expect(() => calculator.add(input)).toThrowError('Negatives not allowed: -2,-4');
+    });
+
+    it('ignore numbers bigger then 1000', () => {
+      const input = buildInput(';', [1,2,3,4,1001]);
+
+      const result = calculator.add(input);
+
+      expect(result).toBe(10);
     });
 
   });
