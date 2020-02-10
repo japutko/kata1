@@ -1,7 +1,7 @@
 export default class StringCalculator {
   /**
    * Simulates addition on numbers given on input.
-   * @param input numbers connected via string separated by comma
+   * @param input numbers connected via string separated by comma or new line
    * @return result of addition
    * @throws Error on incorrect input
    */
@@ -9,7 +9,8 @@ export default class StringCalculator {
     if (!input) {
       return 0;
     }
-    const numbers: number[] = input.split(',').map(s => parseInt(s.trim()));
+    const separators = /[\n,]/;
+    const numbers: number[] = input.split(separators).map(s => parseInt(s.trim()));
     return numbers.reduce((prev, next) => prev + next);
   }
 }

@@ -42,7 +42,15 @@ describe('StringCalculator', () => {
       const input = '1,2,3,4';
 
       const result = calculator.add(input);
-      
+
+      expect(result).toBe(10);
+    });
+
+    it('accept new line as number separator', () => {
+      const input = '1,2\n3,4';
+
+      const result = calculator.add(input);
+
       expect(result).toBe(10);
     });
 
