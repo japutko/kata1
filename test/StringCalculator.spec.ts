@@ -80,4 +80,25 @@ describe('StringCalculator', () => {
 
   });
 
+  describe('getCalledCount', () => {
+
+    let calculator: StringCalculator;
+
+    beforeEach(() => {
+      calculator = new StringCalculator();
+    });
+
+    it('return number of add() method calls', () => {
+      const times = 3;
+      for(let i = 0; i < times; i++) {
+        calculator.add('');
+      }
+
+      const calls = calculator.getCalledCount();
+
+      expect(calls).toEqual(times);
+    });
+
+  });
+
 });

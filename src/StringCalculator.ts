@@ -1,10 +1,18 @@
 export default class StringCalculator {
+
+  private callsCount = 0;
+
+  public getCalledCount(): number {
+    return this.callsCount;
+  }
+
   /**
    * Simulates addition on numbers given on input.
    * @param input up to 3 numbers separated by comma or new line or delimiter on first line and numbers joined with this delimiter on second line
    * @return result of addition or 0 on wrong input
    */
   public add(input: string): number {
+    this.callsCount += 1;
     if (!input) {
       return 0;
     }
