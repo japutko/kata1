@@ -12,20 +12,35 @@ export default class StringCalculator {
     
     let numbers: number[];
     if (!separatorCandidate || !isNaN(parseInt(separatorCandidate))) {
-      const separators = /[\n,]/;
-      numbers = input.split(separators).map(s => parseInt(s));
+      numbers = this.addOneLiner(input);
     } else {
-      const lines = input.split('\n').map(l => l.trim());
-      if (lines.length !== 2) {
-        return 0;
-      }
-      const separator = lines[0];
-      if (!separator) {
-        return 0;
-      }
-      numbers = lines[1].split(separator).map(s => parseInt(s));
+      numbers = this.addTwoLiner(input);
+    }
+    const negative = numbers.find(n => n < 0);
+    if (negative) {
+      throw new Error('Negatives not allowed: ' + negative);
     }
 
     return numbers.reduce((prev, next) => prev + next);
+  }
+
+  private addOneLiner(input: string): number[] {
+    const separators = /[\n,]/;
+    return input.split(separators).map(s => parseInt(s));
+  }
+
+  private addTwoLiner(input: string): number[] {
+    const lines = input.split('\n').map(l => l.trim());
+    if (lines.length !== 2) {
+      throw new Error('Wrong input format');
+    }
+    const separator = lines[0];
+    if (!separator) {
+      throw new Error('No separator specified');
+    }
+    if(!lines[1]) {
+      return [0];
+    }
+    return lines[1].split(separator).map(s => parseInt(s));
   }
 }

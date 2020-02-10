@@ -66,6 +66,12 @@ describe('StringCalculator', () => {
       expect(result).toBe(10);
     });
 
+    it('throws error when input contains negative number', () => {
+      const input = buildInput(';', [1,-2,3,-4]);
+
+      expect(() => calculator.add(input)).toThrowError('Negatives not allowed: -2');
+    });
+
   });
 
 });
